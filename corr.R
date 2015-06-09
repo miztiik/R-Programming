@@ -24,6 +24,9 @@ corr <- function(directory="specdata", threshold = 0) {
   file.names <- sprintf("%03d.csv",df$id)
   file.names <- paste(dir,file.names,sep="/")
 
+  #using sapply to read the files, removing entries with NA to avoid issues with corr
+  #the "USE.NAMES" removes the result from being named.
+  # Probably could remove the 'tmp' but that is for future attempts.
   sapply(file.names,
          function(fname) {
            tmp <- na.omit(read.csv(fname))
