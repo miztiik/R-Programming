@@ -12,12 +12,9 @@ pollutantmean <- function(directory="specdata", pollutant, id = 1:332) {
 
   #create a dummy output file
   out.file <- ""
-  #recursive read into a single file
-  out.file <- do.call("rbind", lapply(file.names, read.csv, header = T))
+  #recursive read into a single file into a dataframe
+  df <- do.call("rbind", lapply(file.names, read.csv, header = T))
 
-  write.table(out.file, file = "allData.csv",sep=",",row.names=F)
-
-  df <- read.csv("allData.csv")
   #Calculate the mean for the given pollutant
   pollutantMean <- mean(df[,pollutant],na.rm=T)
 

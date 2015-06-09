@@ -1,3 +1,7 @@
+## Miztiik
+## 08Jun2013
+## John Hopkins R Programming Week02 Assignment
+
 ## A function to return completely observed sets(not sure what exactly that means)
 ## My presumptions is to return all observations without any "na"
 ## https://class.coursera.org/rprog-015/assignment/view?assignment_id=3
@@ -15,9 +19,8 @@ rowNames <- length(id)
 ## Col 1 - the Monitor ID
 ## Col 2 - No. of observations without any "NA" - I am using a combination of sapply and "na.omit" instead of usuall "complete.cases" - found this simpler to understand
 ## Col 3 - Not exactly a column but row names - quick hack to have an row index from the length of id's
-df <- data.frame(
-                 id = id,
-        nobs =sapply(file.names, function(fname) nrow(na.omit(read.csv(fname))) ),
+df <- data.frame(id = id,
+        nobs = sapply(file.names, function(fname) nrow(na.omit(read.csv(fname))) ),
         row.names = 1:rowNames
 
          )
