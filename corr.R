@@ -17,8 +17,9 @@ corr <- function(directory="specdata", threshold = 0) {
   #Find the monitor IDs which meet the threshold
   df <- complete()
 
-  df <- subset(df,nobs>threshold)
+  df <- subset(df,nobs>=threshold)
 
+  if(length(df$id) > 0) {
   #setting the files names for 3 character filenames
   dir <- paste("./input",directory,sep="/")
   file.names <- sprintf("%03d.csv",df$id)
@@ -33,4 +34,8 @@ corr <- function(directory="specdata", threshold = 0) {
            cor(tmp$sulfate,tmp$nitrate)
          },USE.NAMES=FALSE
         )
-}
+    }
+  else {
+   NULL
+  }
+  }
