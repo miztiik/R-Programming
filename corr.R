@@ -19,6 +19,7 @@ corr <- function(directory="specdata", threshold = 0) {
 
   df <- subset(df,nobs>=threshold)
 
+  #Added if loop to avoid situations where the threshold is not met
   if(length(df$id) > 0) {
   #setting the files names for 3 character filenames
   dir <- paste("./input",directory,sep="/")
